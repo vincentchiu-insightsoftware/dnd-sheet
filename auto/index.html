@@ -704,7 +704,7 @@ function spellLevels() {
         lv ? ctl('sp' + lv + '_' + i + '_p', { label: '已預備' }) : null,
         spellInput(lv, i, update)));
     }
-    const d = h('details', { class: 'lv' }, h('summary', {}, h('b', { text: lv ? lv + ' 環法術' : '小法術（0 環）' }), cnt), body);
+    const d = h('details', { class: 'lv' }, h('summary', {}, h('b', { text: lv ? lv + ' 環法術' : '戲法（0 環）' }), h('small', { class: 'kind', text: lv ? '　準備法術・要消耗法術位' : '　不耗法術位・無限次' }), cnt), body);
     lvUpdaters.push(() => { update(); if (cnt.textContent) d.open = true; });
     wrap.append(d);
   }
@@ -15714,7 +15714,7 @@ function buildForm() {
       D.castHint = h('p', { class: 'hint' })),
     sec('法術列表', D.spellCap = h('p', { class: 'cap' }),
       h('p', { class: 'hint', text: '點圓圈＝已準備；法術位總數會自動帶入' }),
-      h('details', { class: 'spexp' }, h('summary', { text: '戲法、準備法術、法術位差在哪？' }),
+      h('details', { class: 'spexp', open: true }, h('summary', { text: '戲法、準備法術、法術位差在哪？' }),
         h('dl', {},
           h('dt', { text: '戲法' }), h('dd', { text: '不耗法術位、可無限次施放的小法術。升級時可替換 1 個。' }),
           h('dt', { text: '準備法術' }), h('dd', { text: '你目前會用的 1 環以上法術，從職業法術表選。2024 版沒有另外的「已知法術」，只有這份準備清單。' }),
