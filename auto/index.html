@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>D&amp;D 自動角色卡</title>
 <style>
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 /* 桌面上攤著三張 Letter 紙：上方工具列，下方是可直接填寫的角色卡 */
 :root {
   --desk: #e6e3dc;
@@ -322,7 +323,7 @@ textarea.f { resize: none; padding: 1pt 2pt; overflow: hidden; white-space: pre-
 @media (prefers-reduced-motion: reduce) { #toast { transition: none; } }
 @media print {
   #bar, #toast { display: none; }
-  #desk { padding: 0; } #sheets { gap: 0; zoom: 1 !important; }
+  #desk { padding: 0; } #sheets { gap: 0; transform: none !important; margin-bottom: 0 !important; }
   .page { box-shadow: none; break-after: page; }
   @page { size: letter; margin: 0; }
 }
@@ -482,12 +483,25 @@ function fileBase() {
 }
 
 // 手機等窄螢幕：整張紙等比例縮小
+// 用 transform 縮放，不用 CSS zoom：iOS WebKit 的 zoom 不會縮放 input/textarea 內的字，
+// 造成 fit() 把行高縮到 5pt 比例、字卻維持大字級，文字就疊在一起。transform 不改版面尺寸，量測也維持正確。
+function setSheetScale(z) {
+  const el = document.getElementById('sheets');
+  el.dataset.z = z;
+  el.style.transformOrigin = 'top left';
+  el.style.transform = z < 1 ? 'scale(' + z + ')' : '';
+  el.style.marginBottom = z < 1 ? (-(el.offsetHeight * (1 - z))) + 'px' : '';
+}
+if (window.ResizeObserver) new ResizeObserver(() => {
+  const el = document.getElementById('sheets'), z = parseFloat(el.dataset.z || '1');
+  if (z < 1 && el.style.transform) el.style.marginBottom = (-(el.offsetHeight * (1 - z))) + 'px';
+}).observe(document.getElementById('sheets'));
 function scale() {
   const desk = document.getElementById('desk');
   if (!desk.clientWidth) return;             // 表單模式時紙本是隱藏的
   const avail = desk.clientWidth - 32;
   const z = Math.min(1, avail / 816);
-  $('#sheets').style.zoom = z < 1 ? z : '';
+  setSheetScale(z < 1 ? z : 1);
 }
 
 // ---------- 第 3 頁編輯 ----------
@@ -530,7 +544,7 @@ async function snap(el, opts = {}) {
     scale: 3, backgroundColor: '#ffffff', useCORS: true, logging: false,
     scrollX: 0, scrollY: 0, windowWidth: Math.max(document.documentElement.clientWidth, 1000),
     onclone: doc => {
-      doc.getElementById('sheets').style.zoom = '';
+      doc.getElementById('sheets').style.transform = 'none'; doc.getElementById('sheets').style.marginBottom = '0';
       doc.getElementById('desk').style.overflow = 'visible';
       // 輸入框換成一般文字，確保 PDF 換行、位置和畫面一致
       doc.querySelectorAll('.f').forEach(c => {
@@ -567,8 +581,8 @@ $('#bPdf').addEventListener('click', async () => {
   $('#busy').hidden = false;
   document.body.classList.remove('view-form');
   document.body.classList.add('exporting');
-  const zoom = $('#sheets').style.zoom;
-  $('#sheets').style.zoom = '';
+  const zoom = parseFloat($('#sheets').dataset.z || '1');
+  setSheetScale(1);
   fitAll();
   window.scrollTo(0, 0);
   try {
@@ -611,7 +625,7 @@ $('#bPdf').addEventListener('click', async () => {
   }
   function restore() {
     if ($('#busy').hidden) return;
-    $('#sheets').style.zoom = zoom;
+    setSheetScale(zoom);
     document.body.classList.remove('exporting');
     if (wasForm) document.body.classList.add('view-form');
     $('#busy').hidden = true;
