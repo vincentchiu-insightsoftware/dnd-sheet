@@ -232,6 +232,7 @@ select.mi { appearance: auto; }
 #featnotes h3 { margin: 6pt 0 0; font-size: 12pt; line-height: 20.5pt; font-weight: normal; }
 #featnotes p { margin: 0; font-size: 10pt; line-height: 17.1pt; }
 #featnotes p.meta { color: #555; font-size: 8.5pt; line-height: 14pt; }
+#featnotes h4 { margin: 4pt 0 0; font-size: 10.5pt; font-weight: 700; }
 #page3 p.tr { font-size: 9pt; line-height: 14pt; color: #333; }
 .subw, .inv { display: flex; flex-direction: column; gap: 8px; }
 .inv { padding-bottom: 10px; border-bottom: 1px solid var(--line); }
@@ -13337,6 +13338,83 @@ const R = {
     "轉生的生物根據物種描述提供的選項做出選擇，並能回憶起自己的前世。它將保留前世的能力，但失去其從前的物種特性，並獲得新物種的特性。"
    ]
   }
+ },
+ "featFull": {
+  "警覺": [
+   "你將獲得以下增益。",
+   "先攻熟練項。擲骰先攻時，你可以將你的熟練加值加到結果上。",
+   "先攻互換。擲骰先攻後，你可以立即將自己的先攻與同場戰鬥中一名自願盟友的先攻進行互換。你或盟友在處於失能狀態時無法參與互換。"
+  ],
+  "巧匠": [
+   "你將獲得以下增益。",
+   "工具熟練項。你可以從“快速製作”表中選擇三種不同的工匠工具獲得熟練項。",
+   "折扣。你無論何時購買非魔法物品，都能獲得 20% 的折扣。",
+   "快速製作。完成長休後，你可以從“快速製作”表中製作一件裝備，前提是你擁有該物品相關的工匠工具以及對應的工具熟練項。物品會一直持續到你完成下次長休，隨後便會破碎損毀。",
+   "快速製作",
+   "| 工匠工具 | 工藝裝備",
+   "| 木匠工具 | 爬梯、火把",
+   "| 皮匠工具 | 匣、小包",
+   "| 石匠工具 | 滑輪組",
+   "| 陶匠工具 | 壺、油燈",
+   "| 鐵匠工具 | 滾珠、桶、鐵蒺藜、爪鉤、鐵壺",
+   "| 修補匠工具 | 鈴鐺、鏟子、火絨盒",
+   "| 裁縫工具 | 籃子、繩索、捕網、帳篷",
+   "| 木雕師工具 | 短棒、巨棒、長棍"
+  ],
+  "醫師": [
+   "你將獲得以下增益。",
+   "戰鬥醫療。如果你有醫療包，你可以執行使用動作並消耗一次醫療包使用次數來治療 5 尺內的一名生物。該生物可以消耗它的一枚生命骰，然後你擲出這個骰子。該生物恢復的生命值等同於擲骰結果加上你的熟練加值。",
+   "治療重擲。每當你通過擲骰決定法術或本專長的 戰鬥醫療 增益恢復的生命值時，你可以重擲結果為 1 的骰子，但必須使用重擲的結果。"
+  ],
+  "魔法學徒（牧師）": [
+   "你將獲得以下增益。",
+   "兩個戲法。你選擇牧師、德魯伊或法師的法術列表，從其中習得兩個自選戲法。智力、感知或魅力是你通過此專長施展法術的施法屬性（在選擇此專長時由你決定所用的屬性）。",
+   "1 環法術。從你在此專長中選擇戲法的同一列表中選擇一個 1環法術。你始終準備著這個法術。你可以在不消耗法術位的情況下施展該法術一次，並在你完成長休時重獲以這種方式施法的能力。你也可以使用你擁有的任何法術位來施展該法術。",
+   "替換法術。每當你獲得一個新等級時，你可以將此特性選擇的一個法術，替換為所選列表中另一個相同環階的法術。",
+   "可重複。你可以多次選擇此專長，但每次必須選擇不同的法術列表。"
+  ],
+  "魔法學徒（德魯伊）": [
+   "你將獲得以下增益。",
+   "兩個戲法。你選擇牧師、德魯伊或法師的法術列表，從其中習得兩個自選戲法。智力、感知或魅力是你通過此專長施展法術的施法屬性（在選擇此專長時由你決定所用的屬性）。",
+   "1 環法術。從你在此專長中選擇戲法的同一列表中選擇一個 1環法術。你始終準備著這個法術。你可以在不消耗法術位的情況下施展該法術一次，並在你完成長休時重獲以這種方式施法的能力。你也可以使用你擁有的任何法術位來施展該法術。",
+   "替換法術。每當你獲得一個新等級時，你可以將此特性選擇的一個法術，替換為所選列表中另一個相同環階的法術。",
+   "可重複。你可以多次選擇此專長，但每次必須選擇不同的法術列表。"
+  ],
+  "魔法學徒（法師）": [
+   "你將獲得以下增益。",
+   "兩個戲法。你選擇牧師、德魯伊或法師的法術列表，從其中習得兩個自選戲法。智力、感知或魅力是你通過此專長施展法術的施法屬性（在選擇此專長時由你決定所用的屬性）。",
+   "1 環法術。從你在此專長中選擇戲法的同一列表中選擇一個 1環法術。你始終準備著這個法術。你可以在不消耗法術位的情況下施展該法術一次，並在你完成長休時重獲以這種方式施法的能力。你也可以使用你擁有的任何法術位來施展該法術。",
+   "替換法術。每當你獲得一個新等級時，你可以將此特性選擇的一個法術，替換為所選列表中另一個相同環階的法術。",
+   "可重複。你可以多次選擇此專長，但每次必須選擇不同的法術列表。"
+  ],
+  "音樂家": [
+   "你將獲得以下增益。",
+   "樂器訓練。你獲得三種自選樂器的熟練項。",
+   "激勵之歌。當你完成短休或長休時，你可以用具有熟練項的樂器演奏一曲，並讓聽到這首歌的盟友獲得英勇激勵。你能以這種方式影響的盟友數量等同於你的熟練加值。"
+  ],
+  "幸運": [
+   "你將獲得以下增益。",
+   "幸運點。你擁有等同於你熟練加值的幸運點， 你可以將這些點數用於以下增益。你在完成長休時重獲所有已消耗的幸運點。",
+   "優勢。當你在 D20檢定中擲 d20 時，你可以消耗 1 幸運點令你的這次檢定具有優勢。",
+   "劣勢。當生物在對你的攻擊檢定中擲 d20 時，你可以消耗 1 幸運點使該檢定具有劣勢。"
+  ],
+  "兇蠻打手": [
+   "你專門訓練過如何使打擊造成巨大殺傷。每回合一次，當你使用武器命中目標時，你可以擲兩次武器的傷害骰並選擇其中一次作為結果。"
+  ],
+  "熟習": [
+   "你獲得三種你選擇的技能或工具熟練項。",
+   "可重複。你可以多次選擇此專長。"
+  ],
+  "酒館毆鬥者": [
+   "你將獲得以下增益。",
+   "強化徒手打擊。當你以徒手打擊命中並造成傷害時，你可以造成 1d4+你的力量調整值的鈍擊傷害，而非徒手打擊原本的傷害。",
+   "傷害重擲。每當你為徒手打擊擲傷害骰時，你可以重擲結果為 1 的骰子，但必須使用重擲的結果。",
+   "臨時武器。你擁有臨時武器的熟練項。",
+   "推撞。在你的回合中，當作為你攻擊動作中一部分的徒手打擊命中一個生物時，你可以在對目標造成傷害的同時將其推離你 5 尺。你每回合只能使用一次該增益。"
+  ],
+  "健壯": [
+   "獲得此專長時，你的生命值上限增加等同於你角色等級兩倍的數值。此後每當你獲得一個角色等級，你的生命值上限就額外增加 2 點。"
+  ]
  }
 };
 const AB = [['str', '力量'], ['dex', '敏捷'], ['con', '體魄'], ['int', '智力'], ['wis', '感知'], ['cha', '魅力']];
@@ -13349,7 +13427,7 @@ const CFG_BLANK = {
   base: {}, other: {}, skills: {}, picks: { cls: [], sp: [], feat: [] },
   armor: '', shield: false, weapons: ['', '', ''], langs: ['', ''],
   atkNote: '', featNote: '', profNote: '', spNote: '', spAbl: '',
-  sub: '', subName: '', invs: [], pactWeapon: '',
+  sub: '', subName: '', invs: [], invOpt: [], pactWeapon: '', humanFeat: '',
 };
 const CFG_DEFAULT = Object.assign(structuredClone(CFG_BLANK), {
   cls: 'warlock', level: 2, species: '歌利亞', spOpt: '安如磐石（石巨人）',
@@ -13365,6 +13443,7 @@ function mergeCfg(s) {
   // 舊版預設的「迅擊」說明（契術師沒有武器精通），從舊存檔裡移除
   if (typeof m.atkNote === 'string' && m.atkNote.includes('迅擊：當你使用帶有')) m.atkNote = '';
   if (!Array.isArray(m.invs)) m.invs = [];
+  if (!Array.isArray(m.invOpt)) m.invOpt = [];
   // 舊版把宗主和刃之魔契寫在補充文字裡，改成用下拉選單記錄
   if (m.featNote === OLD_FEAT_NOTE) {
     m.featNote = '';
@@ -13420,12 +13499,12 @@ function weaponProficient(c, w) {
 const breathDice = lvl => (lvl >= 17 ? '4d10' : lvl >= 11 ? '3d10' : lvl >= 5 ? '2d10' : '1d10');
 
 // 可自選技能的來源：職業、物種（精靈、人類）、專長「熟習」
-function skillGroups(c, feat) {
+function skillGroups(c, featSrc) {
   const g = [];
   if (c) g.push({ key: 'cls', src: '職業', title: `職業・${c.name}`, pool: c.skillFrom || ALLSK, n: c.skillN });
   if (cfg.species === '精靈') g.push({ key: 'sp', src: '物種', title: '物種・敏銳感官', pool: ['insight', 'perception', 'survival'], n: 1 });
   if (cfg.species === '人類') g.push({ key: 'sp', src: '物種', title: '物種・技藝嫻熟', pool: ALLSK, n: 1 });
-  if (feat === '熟習') g.push({ key: 'feat', src: '專長', title: '專長・熟習（也可改選工具）', pool: ALLSK, n: 3 });
+  for (const f of featSrc) if (f.n === '熟習') g.push({ key: f.key, src: '專長', title: `專長・熟習（${f.from}，也可改選工具）`, pool: ALLSK, n: 3 });
   return g;
 }
 
@@ -13504,8 +13583,30 @@ function linesHtml(lines) {
     ? `<p class="tr">${esc(t.slice(1).split('|').map(s => s.trim()).join('｜'))}</p>`
     : `<p>${esc(t)}</p>`).join('');
 }
+// 需要再做一次選擇的祈喚
+const INV_CHOICE = { '原初之一教習': 'feat', '苦痛魔爆': 'cantrip', '魔能長槍': 'cantrip', '斥力魔爆': 'cantrip' };
+// 文字裡提到的法術（例如「幻象迷蹤」提到無聲幻影），列出來一起介紹
+let SPELL_NAMES = null;
+function spellRefs(lines) {
+  SPELL_NAMES ??= Object.keys(R.spells).filter(n => n.length >= 2).sort((a, b) => b.length - a.length);
+  let txt = lines.join('');
+  const found = [];
+  for (const n of SPELL_NAMES) if (txt.includes(n)) { found.push(n); txt = txt.split(n).join('＿'); }
+  return found;
+}
+function spellCardHtml(n, tag = 'h4') {
+  const s = R.spells[n];
+  const range = (s.meta.match(/射程：(.+?)(?=\s+成分|$)/) || [])[1];
+  return `<${tag}>${esc(n)}${range ? `（${esc(range.trim())}）` : ''}</${tag}>` +
+    `<p class="meta">${esc(`${s.school}・${s.meta.replace(/\s+(?=射程|成分|持續時間)/g, '・')}`)}</p>` + linesHtml(s.text);
+}
+// 會造成傷害的契術師戲法（苦痛魔爆等祈喚用）
+const damagingCantrips = () => Object.entries(R.spells)
+  .filter(([, s]) => s.lv === 0 && s.cls.includes('warlock') && /\d+d\d+[^。]*傷害/.test(s.text.join(''))).map(([n]) => n);
+
 // 第 3 頁最前面：子職業特性（已解鎖）＋所選魔能祈喚的完整說明
-function classFeatHtml(c, sub, invs, lvl, pact) {
+function classFeatHtml(c, sub, invPicks, lvl, pact, featSrc) {
+  const invs = invPicks.map(p => p.n);
   const H = [];
   if (sub) {
     const got = sub.feats.filter(f => f.lv <= lvl);
@@ -13517,11 +13618,21 @@ function classFeatHtml(c, sub, invs, lvl, pact) {
   }
   if (invs.length) {
     H.push('<h2>魔能祈喚</h2>');
-    for (const n of invs) {
-      const inv = R.classes.warlock.invocations.find(i => i.n === n);
-      H.push(`<h3>${esc(n)}${n === '刃之魔契' && pact ? `（契約武器：${esc(pact)}）` : ''}</h3>` +
+    for (const p of invPicks) {
+      const inv = R.classes.warlock.invocations.find(i => i.n === p.n);
+      H.push(`<h3>${esc(p.n)}${p.n === '刃之魔契' && pact ? `（契約武器：${esc(pact)}）` : ''}</h3>` +
         (inv.pre ? `<p class="meta">先決條件：${esc(inv.pre)}</p>` : '') + linesHtml(inv.text));
+      const kind = INV_CHOICE[p.n];
+      if (kind === 'feat') H.push(p.opt && R.featFull[p.opt]
+        ? `<h4>所選起源專長：${esc(p.opt)}</h4>` + linesHtml(R.featFull[p.opt]) : '<p class="meta">（尚未選擇起源專長）</p>');
+      if (kind === 'cantrip') H.push(p.opt ? `<p><b>套用的戲法：</b>${esc(p.opt)}</p>` : '<p class="meta">（尚未選擇戲法）</p>');
+      for (const n of spellRefs(inv.text)) H.push('<p class="meta">相關法術</p>' + spellCardHtml(n, 'h4'));
     }
+  }
+  const others = featSrc.filter(f => f.from !== '原初之一教習');
+  if (others.length) {
+    H.push('<h2>起源專長</h2>');
+    for (const f of others) H.push(`<h3>${esc(f.n)}（${esc(f.from)}）</h3>` + linesHtml(R.featFull[f.n] || []));
   }
   return H.join('');
 }
@@ -13699,6 +13810,22 @@ function compute() {
   const bg = R.backgrounds[cfg.bg] || null;
   const feat = bg ? bg.feat : '';
 
+  // 子職業、魔能祈喚（祈喚可能再帶一個選擇：起源專長或戲法）
+  const sub = c && c.subs ? c.subs.find(s => s.name === cfg.sub) || null : null;
+  const invN = cfg.cls === 'warlock' && row ? num(row.x['魔能祈喚']) || 0 : 0;
+  const invPicks = cfg.cls === 'warlock'
+    ? cfg.invs.slice(0, invN).map((n, i) => ({ n, i, opt: (cfg.invOpt || [])[i] || '' }))
+      .filter(p => R.classes.warlock.invocations.some(x => x.n === p.n))
+    : [];
+  const invs = invPicks.map(p => p.n);
+  const pact = invs.includes('刃之魔契') ? cfg.pactWeapon : '';
+  // 所有起源專長：背景、人類的靈活人才、原初之一教習
+  const featSrc = [];
+  if (feat) featSrc.push({ n: feat, key: 'feat', from: `背景・${cfg.bg}` });
+  if (cfg.species === '人類' && R.feats[cfg.humanFeat]) featSrc.push({ n: cfg.humanFeat, key: 'featHum', from: '人類・靈活人才' });
+  for (const p of invPicks) if (p.n === '原初之一教習' && R.feats[p.opt]) featSrc.push({ n: p.opt, key: 'featInv' + p.i, from: '原初之一教習' });
+  const hasFeat = n => featSrc.some(f => f.n === n);
+
   // 屬性值：基礎值＋背景加值（不超過 20）＋其他加值
   const bonus = asiBonus(bg, cfg.asi);
   const score = {}, mod = {};
@@ -13713,7 +13840,7 @@ function compute() {
   // 豁免與技能
   const saveProf = new Set(c ? c.saves : []);
   const bgSkills = new Set(bg ? bg.skills : []);
-  const groups = skillGroups(c, feat);
+  const groups = skillGroups(c, featSrc);
   const skillSrc = {};
   for (const k of bgSkills) skillSrc[k] = '背景';
   for (const g of groups) {
@@ -13740,20 +13867,14 @@ function compute() {
   if (cfg.species === '精靈' && cfg.spOpt === '木精靈') speed = 35;
   if (cfg.cls === 'monk' && !armor && !cfg.shield) speed += num(row.x['無甲移動']) || 0;
   if (cfg.cls === 'barbarian' && lvl >= 5 && !(armor && armor.kind === 'heavy')) speed += 10;
-  const init = mod.dex + (feat === '警覺' ? pb : 0) + jack;
+  const init = mod.dex + (hasFeat('警覺') ? pb : 0) + jack;
   let hp = null;
   if (c && has('con')) {
     hp = c.hd + mod.con;
     for (let i = 2; i <= lvl; i++) hp += Math.max(1, c.hd / 2 + 1 + mod.con);
-    hp = Math.max(1, hp) + (sp ? sp.hpPerLevel * lvl : 0) + (feat === '健壯' ? 2 * lvl : 0);
+    hp = Math.max(1, hp) + (sp ? sp.hpPerLevel * lvl : 0) + (hasFeat('健壯') ? 2 * lvl : 0);
   }
   const dv = cfg.species === '精靈' && cfg.spOpt === '卓爾' ? 120 : (sp ? sp.dv : 0);
-
-  // 子職業、魔能祈喚
-  const sub = c && c.subs ? c.subs.find(s => s.name === cfg.sub) || null : null;
-  const invN = cfg.cls === 'warlock' && row ? num(row.x['魔能祈喚']) || 0 : 0;
-  const invs = cfg.cls === 'warlock' ? cfg.invs.slice(0, invN).filter(n => R.classes.warlock.invocations.some(i => i.n === n)) : [];
-  const pact = invs.includes('刃之魔契') ? cfg.pactWeapon : '';
 
   // 武器攻擊（刃之魔契的契約武器：一定熟練，可用魅力攻擊和傷害）
   const atkLines = [];
@@ -13785,6 +13906,7 @@ function compute() {
     if (opt && !sp.traits.some(t => t[1].includes('{opt}') || t[1].includes('{dmg}'))) F.push(`${sp.opt.label}・${opt[0]}：${opt[1]}`);
   }
   if (bg) F.push(`【背景・${cfg.bg}】${feat}：${R.feats[feat] || ''}`);
+  for (const f of featSrc) if (f.key !== 'feat') F.push(`【專長・${f.n}（${f.from}）】${R.feats[f.n] || ''}`);
   if (c) {
     F.push(`【${c.name} ${lvl} 級】`);
     for (let i = 0; i < lvl; i++) if (c.levels[i].f) F.push(`${i + 1} 級：${c.levels[i].f}`);
@@ -13800,7 +13922,7 @@ function compute() {
         ? `｜${[...new Set(got.map(f => f.name))].join('、')}（說明見第 3 頁）`
         : `｜${c.subLv} 級起獲得特性`));
     }
-    if (invs.length) F.push(`魔能祈喚：${invs.map(n => n === '刃之魔契' && pact ? `刃之魔契（${pact}）` : n).join('、')}（說明見第 3 頁）`);
+    if (invs.length) F.push(`魔能祈喚：${invPicks.map(p => p.n === '刃之魔契' && pact ? `刃之魔契（${pact}）` : p.opt && INV_CHOICE[p.n] ? `${p.n}（${p.opt}）` : p.n).join('、')}（說明見第 3 頁）`);
   }
   if (cfg.featNote) F.push(cfg.featNote);
 
@@ -13828,7 +13950,7 @@ function compute() {
   if (sp3) { sp3.innerHTML = spSpells; sp3.hidden = !spSpells; }
   renderClassSpells();
   const fn = document.getElementById('featnotes');
-  const fhtml = classFeatHtml(c, sub, invs, lvl, pact);
+  const fhtml = classFeatHtml(c, sub, invPicks, lvl, pact, featSrc);
   if (fn) { fn.innerHTML = fhtml; fn.hidden = !fhtml; }
   put('class_level', c ? `${c.name} ${lvl}` : '');
   put('race', cfg.species);
@@ -13861,7 +13983,7 @@ function compute() {
   for (let i = 1; i <= 9; i++) put('slots' + i + '_total', slots[i - 1] || '');
 
   C = { c, lvl, row, pb, sp, opt, bg, feat, bonus, score, mod, saveProf, bgSkills, skillLv, skillVal, ac, speed, init, hp,
-    atk: atkLines, F, P, castAb, slots, dv, groups, skillSrc, spDetail, spSpells, langs, sub, invN, invs, pact, fhtml };
+    atk: atkLines, F, P, castAb, slots, dv, groups, skillSrc, spDetail, spSpells, langs, sub, invN, invs, invPicks, pact, fhtml, featSrc };
   renderAuto();
 }
 
@@ -13922,6 +14044,8 @@ function buildForm() {
         })),
         cfgField('背景', cfgSelect('bg', '背景', bgList, () => { cfg.asi = ''; })),
         D.spOptWrap,
+        D.humFeatWrap = cfgField('靈活人才：選一個起源專長', cfgSelect('humanFeat', '人類起源專長',
+          [['', '（選擇一個起源專長）'], ...Object.entries(R.feats).map(([k, v]) => [k, `${k}｜${v}`])]), { wide: true }),
         cfgField('背景屬性加值', D.asi, { wide: true }),
         D.subWrap = h('div', { class: 'fl wide subw' },
           h('label', { class: 'fl' }, D.subLab = h('span'), D.subSel = cfgSelect('sub', '子職業', [['', '']])),
@@ -14038,14 +14162,14 @@ function renderInvs() {
   const on = cfg.cls === 'warlock' && C.invN > 0;
   D.invSec.hidden = !on;
   if (!on) return;
-  const all = R.classes.warlock.invocations;
+  const INVS = R.classes.warlock.invocations;
   D.invHint.textContent = `契術師 ${C.lvl} 級可以有 ${C.invN} 個魔能祈喚。刃之魔契、鏈之魔契、書之魔契都是祈喚選項；每次升級可以替換一個。`;
   D.invBox.replaceChildren();
   for (let i = 0; i < C.invN; i++) {
     const cur = cfg.invs[i] || '';
     const s = h('select', { class: 'mi', 'aria-label': `魔能祈喚 ${i + 1}` });
     s.append(optEl('', '（未選擇）'));
-    for (const inv of all) {
+    for (const inv of INVS) {
       const taken = !inv.rep && inv.n !== cur && cfg.invs.slice(0, C.invN).includes(inv.n);
       const lack = inv.lv > C.lvl || (inv.req && !cfg.invs.slice(0, C.invN).includes(inv.req));
       const o = optEl(inv.n, inv.n + (inv.lv > 1 || inv.req ? `（需 ${inv.lv > 1 ? inv.lv + ' 級' : ''}${inv.lv > 1 && inv.req ? '・' : ''}${inv.req || ''}）` : '') + (taken ? '・已選' : ''));
@@ -14053,13 +14177,50 @@ function renderInvs() {
       s.append(o);
     }
     s.value = cur;
-    s.addEventListener('change', () => { const a = cfg.invs.slice(); a[i] = s.value; cfg.invs = a; compute(); changed(); });
-    const inv = all.find(x => x.n === cur);
+    s.addEventListener('change', () => {
+      const a = cfg.invs.slice(); a[i] = s.value; cfg.invs = a;
+      const o = (cfg.invOpt || []).slice(); o[i] = ''; cfg.invOpt = o;      // 換祈喚時清掉舊的子選擇
+      compute(); changed();
+    });
+    const inv = INVS.find(x => x.n === cur);
     const box = h('div', { class: 'inv' }, h('span', { class: 'cgt', text: `祈喚 ${i + 1}` }), s);
     if (inv) {
       const d = h('div', { class: 'pv rich' });
-      d.innerHTML = (inv.pre ? `<p class="meta">先決條件：${esc(inv.pre)}</p>` : '') + linesHtml(inv.text);
+      d.innerHTML = (inv.pre ? `<p class="meta">先決條件：${esc(inv.pre)}</p>` : '') + linesHtml(inv.text) +
+        spellRefs(inv.text).map(n => `<details><summary><b>相關法術：${esc(n)}</b>（點開看說明）</summary>${spellCardHtml(n, 'h4')}</details>`).join('');
       box.append(d);
+      const kind = INV_CHOICE[inv.n];
+      if (kind) {
+        const curOpt = (cfg.invOpt || [])[i] || '';
+        const os = h('select', { class: 'mi', 'aria-label': `祈喚 ${i + 1} 的選擇` });
+        const sameInv = C.invPicks.filter(p => p.n === inv.n && p.i !== i).map(p => p.opt);
+        if (kind === 'feat') {
+          const bgFeat = C.featSrc.filter(f => f.key !== 'featInv' + i).map(f => f.n);
+          os.append(optEl('', '（選擇一個起源專長）'));
+          for (const [fn, sum] of Object.entries(R.feats)) {
+            const dup = (sameInv.includes(fn) || bgFeat.includes(fn)) && fn !== '熟習';
+            const o = optEl(fn, `${fn}｜${sum}` + (dup ? '（已擁有）' : ''));
+            o.disabled = dup && fn !== curOpt;
+            os.append(o);
+          }
+        } else {
+          const known = new Set(all.filter(f => /^sp0_\d+$/.test(f.k)).map(f => els[f.k].value.trim()));
+          os.append(optEl('', '（選擇一個已知的傷害戲法）'));
+          for (const n of damagingCantrips()) {
+            const o = optEl(n, n + (known.has(n) ? '（已知）' : '（尚未學會）') + (sameInv.includes(n) ? '・已套用' : ''));
+            o.disabled = sameInv.includes(n) && n !== curOpt;
+            os.append(o);
+          }
+        }
+        os.value = curOpt;
+        os.addEventListener('change', () => { const a = (cfg.invOpt || []).slice(); a[i] = os.value; cfg.invOpt = a; compute(); changed(); });
+        box.append(h('label', { class: 'fl' }, h('span', { text: kind === 'feat' ? '要獲得的起源專長' : '要套用的戲法' }), os));
+        if (kind === 'feat' && R.featFull[curOpt]) {
+          const fd = h('div', { class: 'pv rich' });
+          fd.innerHTML = `<p><b>${esc(curOpt)}</b></p>` + linesHtml(R.featFull[curOpt]);
+          box.append(fd);
+        }
+      }
       if (inv.n === '刃之魔契') {
         const ws = h('select', { class: 'mi', 'aria-label': '契約武器' });
         ws.append(optEl('', '（選擇契約武器）'));
@@ -14134,6 +14295,7 @@ function renderAuto() {
   renderChips();
   renderSub();
   renderInvs();
+  D.humFeatWrap.hidden = cfg.species !== '人類';
   D.skillHint.textContent = '下面每一項會自動算出加值，標籤是熟練的來源。點左邊圓圈可以另外加熟練或設定專精（例如遊蕩者、吟遊詩人的專精）。';
   D.ac.textContent = has('dex') ? C.ac : '—';
   D.init.textContent = has('dex') ? fmt(C.init) : '—';
