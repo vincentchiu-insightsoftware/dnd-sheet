@@ -87,6 +87,10 @@ body.view-form #desk { display: none; }
 .sec { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
 .sec h2 { margin: 0; font-size: 15px; letter-spacing: .06em; color: var(--head); }
 .hint { margin: -6px 0 0; font-size: 12px; color: var(--muted); }
+.spexp { font-size: 13px; line-height: 1.7; background: var(--chip); border-radius: 8px; padding: 8px 12px; }
+.spexp summary { cursor: pointer; font-weight: 700; color: var(--head); }
+.spexp dt { font-weight: 700; margin-top: 8px; }
+.spexp dd { margin: 2px 0 0; color: var(--fg); }
 .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .fl { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
@@ -15347,11 +15351,11 @@ function spellCapText() {
   const parts = [];
   if (r.cantrips) {
     const n = filledSpells(lv => lv === 0).length;
-    parts.push(`戲法 ${n} / ${r.cantrips}` + (n > r.cantrips ? `（多了 ${n - r.cantrips} 個）` : n < r.cantrips ? `（還可以選 ${r.cantrips - n} 個）` : '（已滿）'));
+    parts.push(`戲法 ${n} / ${r.cantrips}` + (n > r.cantrips ? `（多了 ${n - r.cantrips} 個；若是種族、專長或祈喚額外給的可忽略）` : n < r.cantrips ? `（還可以選 ${r.cantrips - n} 個）` : '（已滿）'));
   }
   if (r.prepared) {
     const n = filledSpells(lv => lv >= 1).length;
-    parts.push(`準備法術 ${n} / ${r.prepared}` + (n > r.prepared ? `（多了 ${n - r.prepared} 個）` : n < r.prepared ? `（還可以選 ${r.prepared - n} 個）` : '（已滿）'));
+    parts.push(`準備法術 ${n} / ${r.prepared}` + (n > r.prepared ? `（多了 ${n - r.prepared} 個；若是特性額外給的可忽略）` : n < r.prepared ? `（還可以選 ${r.prepared - n} 個）` : '（已滿）'));
   }
   const maxLv = r.pactLv || (r.slots ? r.slots.reduce((m, v, i) => (v ? i + 1 : m), 0) : 0);
   const slotTxt = r.pact ? `契約法術位 ${r.pact} 個（全部 ${r.pactLv} 環）` : r.slots ? '法術位 ' + r.slots.map((v, i) => (v ? `${i + 1} 環×${v}` : '')).filter(Boolean).join('、') : '';
@@ -15709,7 +15713,13 @@ function buildForm() {
       disp('scls', '法術職業'), disp('sabl', '施法屬性'), disp('sdc', '法術豁免 DC'), disp('satk', '法術攻擊加值')),
       D.castHint = h('p', { class: 'hint' })),
     sec('法術列表', D.spellCap = h('p', { class: 'cap' }),
-      h('p', { class: 'hint', text: '點圓圈＝已準備；法術位總數會自動帶入' }), spellLevels()),
+      h('p', { class: 'hint', text: '點圓圈＝已準備；法術位總數會自動帶入' }),
+      h('details', { class: 'spexp' }, h('summary', { text: '戲法、準備法術、法術位差在哪？' }),
+        h('dl', {},
+          h('dt', { text: '戲法' }), h('dd', { text: '不耗法術位、可無限次施放的小法術。升級時可替換 1 個。' }),
+          h('dt', { text: '準備法術' }), h('dd', { text: '你目前會用的 1 環以上法術，從職業法術表選。2024 版沒有另外的「已知法術」，只有這份準備清單。' }),
+          h('dt', { text: '法術位（契約師叫契約法術位）' }), h('dd', { text: '施放準備法術的次數，不是法術本身。施放 1 次用掉 1 個，用完要休息才恢復。契約師的位數很少，但全部同一環，且短休就恢復。' }))),
+      spellLevels()),
     sec('法術說明（第 3 頁）', h('p', { class: 'hint', text: '第 3 頁依序是：職業法術（跟著法術列表自動更新）、種族法術（自動）、補充說明（自己寫）。' }),
       h('h3', { class: 'subh', text: '職業法術（自動）' }),
       D.clsSp = h('div', { class: 'pv rich' }),
