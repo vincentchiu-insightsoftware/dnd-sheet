@@ -7,5 +7,6 @@
 - 填寫內容只存在自己的瀏覽器，不會上傳
 - 「匯出存檔／匯入存檔」可以把角色資料存成 .json 帶著走
 - 「清空全部」可以變成空白角色卡
+- 手機打開會自動變成直式表單（表單模式），按「紙本預覽」可以看原本的角色卡版面
 
 角色卡版面：TM & © 2014 Wizards of the Coast LLC. Permission is granted to photocopy this document for personal use.
