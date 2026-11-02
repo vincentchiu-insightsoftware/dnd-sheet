@@ -15137,6 +15137,15 @@ function featCalc(n, row) {
 function classFeatList(c, lvl) {
   return c ? c.feats.filter(f => f.lv <= lvl) : [];
 }
+// 第 3 頁只寫「效果」：把規則出處、flavor、先決條件說明這類不影響操作的段落拿掉。
+// 沒列在這裡的特性仍用原文。
+const CONCISE_FEATS = {
+  warlock: {
+    '魔能祈喚': ['每當你獲得契術師等級時，可以把 1 個已選的祈喚換成另一個（先決條件須符合）。各祈喚的效果見下方「魔能祈喚」。'],
+    '契約魔法': ['用契約法術位施放你準備的法術；施法屬性為魅力，可用奧術法器當施法法器。',
+      '每當你獲得契術師等級時，可以替換 1 個戲法、1 個準備法術。']
+  }
+};
 function classFeatHtml(c, sub, invPicks, lvl, pact, featSrc) {
   const invs = invPicks.map(p => p.n);
   const H = [];
@@ -15145,16 +15154,17 @@ function classFeatHtml(c, sub, invPicks, lvl, pact, featSrc) {
     H.push(`<h2>職業特性｜${esc(c.name)} ${lvl} 級</h2>`);
     for (const f of cf) {
       const calc = featCalc(f.name, c.levels[lvl - 1]);
-      H.push(`<h3>${f.lv} 級：${esc(f.name)}</h3>` + (calc ? `<p class="meta">${esc(calc)}</p>` : '') + linesHtml(f.text));
+      const short = (CONCISE_FEATS[cfg.cls] || {})[f.name];
+      H.push(`<h3>${f.lv} 級：${esc(f.name)}</h3>` + (calc ? `<p class="meta">${esc(calc)}</p>` : '') + linesHtml(short || f.text));
     }
   }
   if (sub) {
     const got = sub.feats.filter(f => f.lv <= lvl);
-    H.push(`<h2>${subLabel(cfg.cls)}｜${esc(sub.name)}${cfg.subName ? `（${esc(cfg.subName)}）` : ''}</h2>`);
-    if (!got.length) H.push(`<p class="meta">${esc(sub.tag)}・依 2024 版規則，${c.subLv} 級起才獲得子職業特性</p>`);
-    for (const f of got) H.push(`<h3>${f.lv} 級：${esc(f.name)}</h3>` + linesHtml(f.text));
-    const next = sub.feats.filter(f => f.lv > lvl);
-    if (next.length) H.push(`<p class="meta">之後會獲得：${next.map(f => `${f.lv} 級 ${esc(f.name)}`).join('、')}</p>`);
+    // 還沒到子職業等級就整段不放；之後的特性等升到該等級才會出現
+    if (got.length) {
+      H.push(`<h2>${subLabel(cfg.cls)}｜${esc(sub.name)}${cfg.subName ? `（${esc(cfg.subName)}）` : ''}</h2>`);
+      for (const f of got) H.push(`<h3>${f.lv} 級：${esc(f.name)}</h3>` + linesHtml(f.text));
+    }
   }
   if (invs.length) {
     H.push('<h2>魔能祈喚</h2>');
