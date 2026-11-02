@@ -10271,6 +10271,8 @@ let cfg = structuredClone(CFG_DEFAULT);
 function mergeCfg(s) {
   const m = Object.assign(structuredClone(CFG_BLANK), JSON.parse(JSON.stringify(s || {})));
   m.picks = Object.assign({ cls: [], sp: [], feat: [] }, m.picks);
+  // 舊版預設的「迅擊」說明（契術師沒有武器精通），從舊存檔裡移除
+  if (typeof m.atkNote === 'string' && m.atkNote.includes('迅擊：當你使用帶有')) m.atkNote = '';
   return m;
 }
 const ALLSK = SKA.map(s => s[0]);
